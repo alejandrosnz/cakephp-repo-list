@@ -49,12 +49,12 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Repos/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Repos', 'action' => 'display', 'home']);
+    $routes->connect('/', ['controller' => 'Repos', 'action' => 'index']);
 
     /**
      * ...and connect the rest of 'Repos' controller's URLs.
      */
-    $routes->connect('/repo/*', ['controller' => 'Repos', 'action' => 'display']);
+    //$routes->connect('/repo/*', ['controller' => 'Repos', 'action' => 'display']);
 
     /**
      * Connect catchall routes for all controllers.
