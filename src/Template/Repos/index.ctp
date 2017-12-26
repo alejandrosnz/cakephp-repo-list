@@ -15,25 +15,43 @@ $this->layout = false;
     </title>
 
     <?= $this->Html->meta('icon') ?>
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('cake.css') ?>
-    <?= $this->Html->css('home.css') ?>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
+    <?= $this->Html->css('bootstrap.css') ?>
+    <?= $this->Html->css('font-awesome.css') ?>
+    <?= $this->Html->css('repo.css') ?>
 </head>
 <body class="home">
 
-<header class="row">
-    <div class="header-title">
-        <h1>Symfony repos</h1>
-    </div>
-</header>
+<div class="container">
 
-<div class="row">
-    <ul>
-    <?php foreach ($repos as $repo): ?>
-        <li><?= $repo["full_name"] ?></li>
-    <?php endforeach; ?>
-    </ul>
+    <div class="repo-group">
+        <?php foreach ($repos as $repo): ?>
+
+            <div class="repo row">
+                
+                <div class="repo-picture media-left"
+                    <a href=<?= $repo["html_url"] ?>>
+                        <img src=<?= $repo["owner"]["avatar_url"] ?> class="repo-photo">
+                    </a>
+                </div>
+
+                <div class="repo-data media-body">
+                    <h4 class="title">
+                        <?= $repo["full_name"] ?>
+                    </h4>
+                    <p class="summary"><?= $repo["description"] ?></p>
+                </div>
+
+                <div class="repo-meta">
+                    <button type="button" class="btn btn-sm btn-default"><?= $repo["stargazers_count"] ?> <span class="fa fa-star-o"></span></button>
+                    <button type="button" class="btn btn-sm btn-default"><?= $repo["forks_count"] ?> <span class="fa fa-code-fork"></span></button>
+                    <button type="button" class="btn btn-sm btn-default"><?= $repo["open_issues"] ?> <span class="fa fa-exclamation-circle"></span></button>
+                </div>
+                
+            </div>
+
+        <?php endforeach; ?>
+
+    </div>
 
 </div>
 

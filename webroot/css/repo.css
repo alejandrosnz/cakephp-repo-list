@@ -1,0 +1,19 @@
+
+.repo {
+    position: relative;
+    border: solid lightgray 1px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.repo-photo { 
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+} 
+
+.repo-meta {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
