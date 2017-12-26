@@ -1,6 +1,5 @@
 <?php
 
-use Cake\Cache\Cache;
 use App\Model\Repo;
 
 $this->layout = false;
