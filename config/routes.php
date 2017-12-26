@@ -54,7 +54,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     /**
      * ...and connect the rest of 'Repos' controller's URLs.
      */
-    //$routes->connect('/repo/*', ['controller' => 'Repos', 'action' => 'display']);
+    $routes->connect('/repo/download', ['controller' => 'Repos', 'action' => 'download']);
 
     /**
      * Connect catchall routes for all controllers.

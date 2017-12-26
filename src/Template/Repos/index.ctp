@@ -11,7 +11,7 @@ $this->layout = false;
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $cakeDescription ?>
+        Repos
     </title>
 
     <?= $this->Html->meta('icon') ?>
@@ -22,6 +22,10 @@ $this->layout = false;
 <body class="home">
 
 <div class="container">
+
+    <div class="repo-menu">
+        <a href="/repo/download" class="btn btn-default">Download data as CSV <span class="fa fa-cloud-download"></span></a>
+    </div>
 
     <div class="repo-group">
         <?php foreach ($repos as $repo): ?>
