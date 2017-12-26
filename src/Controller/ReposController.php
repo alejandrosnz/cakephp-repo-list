@@ -14,6 +14,7 @@
  */
 namespace App\Controller;
 
+use App\Model\Repo;
 use Cake\Http\Client;
 
 /**
@@ -51,7 +52,7 @@ class ReposController extends AppController
         
         // Save repos as CSV
         foreach ($repos as $repo) {
-            fwrite($file, $repo["owner"]["login"].';'.$repo["full_name"].';'.$repo["stargazers_count"].';'.$repo["forks_count"].';'.$repo["open_issues"].PHP_EOL);
+            fwrite($file, $repo->toCSV());
         }
 
         fclose($file);
@@ -81,6 +82,23 @@ class ReposController extends AppController
             throw new Exception("Error Processing Request");
         }
 
-        return $response->json;
+        $repos = array();
+
+        foreach ($response->json as $r){
+            $repo = new Repo();
+            
+            $repo->setOwner($r['owner']['login']);
+            $repo->setName($r['full_name']);
+            $repo->setURL($r['html_url']);
+            $repo->setAvatar($r['owner']['avatar_url']);
+            $repo->setDescription($r['description']);
+            $repo->setStars($r['stargazers_count']);
+            $repo->setForks($r['forks_count']);
+            $repo->setOpenIssues($r['open_issues']);
+
+            array_push($repos, $repo);
+        }
+
+        return $repos;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Cake\Cache\Cache;
+use App\Model\Repo;
 
 $this->layout = false;
 
@@ -33,22 +34,22 @@ $this->layout = false;
             <div class="repo row">
                 
                 <div class="repo-picture media-left"
-                    <a href=<?= $repo["html_url"] ?>>
-                        <img src=<?= $repo["owner"]["avatar_url"] ?> class="repo-photo">
+                    <a href=<?= $repo->getURL() ?>>
+                        <img src=<?= $repo->getAvatar() ?> class="repo-photo">
                     </a>
                 </div>
 
                 <div class="repo-data media-body">
                     <h4 class="title">
-                        <?= $repo["full_name"] ?>
+                        <?= $repo->getName() ?>
                     </h4>
-                    <p class="summary"><?= $repo["description"] ?></p>
+                    <p class="summary"><?= $repo->getDescription() ?></p>
                 </div>
 
                 <div class="repo-meta">
-                    <button type="button" class="btn btn-sm btn-default"><?= $repo["stargazers_count"] ?> <span class="fa fa-star-o"></span></button>
-                    <button type="button" class="btn btn-sm btn-default"><?= $repo["forks_count"] ?> <span class="fa fa-code-fork"></span></button>
-                    <button type="button" class="btn btn-sm btn-default"><?= $repo["open_issues"] ?> <span class="fa fa-exclamation-circle"></span></button>
+                    <button type="button" class="btn btn-sm btn-default"><?= $repo->getStars() ?> <span class="fa fa-star-o"></span></button>
+                    <button type="button" class="btn btn-sm btn-default"><?= $repo->getForks() ?> <span class="fa fa-code-fork"></span></button>
+                    <button type="button" class="btn btn-sm btn-default"><?= $repo->getOpenIssues() ?> <span class="fa fa-exclamation-circle"></span></button>
                 </div>
                 
             </div>
