@@ -45,16 +45,16 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
     /**
-     * Here, we are connecting '/' (base path) to a controller called 'Pages',
+     * Here, we are connecting '/' (base path) to a controller called 'Repos',
      * its action called 'display', and we pass a param to select the view file
-     * to use (in this case, src/Template/Pages/home.ctp)...
+     * to use (in this case, src/Template/Repos/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $routes->connect('/', ['controller' => 'Repos', 'action' => 'display', 'home']);
 
     /**
-     * ...and connect the rest of 'Pages' controller's URLs.
+     * ...and connect the rest of 'Repos' controller's URLs.
      */
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->connect('/repo/*', ['controller' => 'Repos', 'action' => 'display']);
 
     /**
      * Connect catchall routes for all controllers.
